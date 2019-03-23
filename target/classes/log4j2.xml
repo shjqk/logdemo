@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration status="error">
+
+
+    <Appenders>
+
+
+        <Routing name="Routing">
+            <Routes pattern="$${thread:threadName}">
+                <Route>
+                    <RollingFile name="logFile-${thread:threadName}"
+                                 fileName="log/concurrent-${thread:threadName}.log"
+                                 filePattern="log/concurrent-${thread:threadName}-%d{MM-dd-yyyy}-%i.log">
+                        <PatternLayout pattern="%d %-5p [%t] %C{2} - %m%n"/>
+                        <Policies>
+                            <SizeBasedTriggeringPolicy size="50 MB"/>
+                        </Policies>
+                        <DefaultRolloverStrategy max="100"/>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+
+        <Console name="console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%-5level] [%class{36}] %L %M - %msg%xEx%n" />
+        </Console>
+
+        <File name="errorfile_appender" fileName="log/exception.log" append="false">
+            <!-- 过滤器 -->
+            <Filters>
+                <!-- 限制日志级别在error及以上 -->
+                <ThresholdFilter level="error"/>
+            </Filters>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+        <File name="file_appender" fileName="log/exception.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+        <!-- 一分钟一个日志 -->
+        <RollingFile name="file_appender" fileName="log/RollingFile.log" filePattern="log/app-%d{yyyy-MM-dd_HH_mm}.log.gz"
+                     ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%-5level] [%class{36}] %L %M - %msg%xEx%n</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+    </Appenders>
+    <loggers>
+
+        <root level="DEBUG">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file_appender"/>
+        </root>
+
+    </loggers>
+
+</configuration>

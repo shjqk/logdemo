@@ -1,0 +1,3 @@
+20:00:04.792 [ERROR] [com.ctrip.flight.exchange.demo] 18 main - 我是debug信息
+20:00:04.804 [WARN ] [com.ctrip.flight.exchange.demo] 19 main - hello warn slf4j
+20:00:04.805 [INFO ] [com.ctrip.flight.exchange.demo] 20 main - hello info slf4j
