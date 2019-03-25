@@ -1,10 +1,9 @@
-package com.ctrip.flight.exchange;
+package com.qq;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Calendar;
 import java.util.concurrent.*;
 
 /**

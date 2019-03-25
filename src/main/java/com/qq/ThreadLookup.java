@@ -1,4 +1,4 @@
-package com.ctrip.flight.exchange;
+package com.qq;
 
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
