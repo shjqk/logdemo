@@ -21,7 +21,7 @@ public class Task implements Runnable {
 
                 //System.out.println(Thread.currentThread().getName()+" running...");
                 logger.error(Thread.currentThread().getName() +" error");
-                ThreadContext.put("ROUTINGKEY", "special");;
+                ThreadContext.put("ROUTINGKEY", Thread.currentThread().getName());;
                 logger.info(Thread.currentThread().getName() +" info");
                 ThreadContext.remove("ROUTINGKEY");
                 Thread.sleep(1000);

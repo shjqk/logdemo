@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration status="error">
+
+
+    <Appenders>
+
+        <Property name="log.layout">%d %-5p %t (%c:%L) - %m%n</Property>
+        <Routing name="thread">
+            <Routes pattern="$${thread:ThreadName}">
+                <Route>
+                    <RollingFile name="RollingFile-${ctx:ThreadName}" fileName="log/${ctx:ThreadName}.log"
+                                 filePattern="log/${ctx:ThreadName}-%d{HH-mm-ss}.log" append="false">
+                        <PatternLayout pattern="${log.layout}"/>
+                        <Policies>
+                            <SizeBasedTriggeringPolicy size="50 MB"/>
+                        </Policies>
+                        <DefaultRolloverStrategy max="100"/>
+                    </RollingFile>
+                </Route>
+                <Route ref="STDOUT" key="${ctx:ThreadName}"/>
+            </Routes>
+        </Routing>
+
+        <Console name="console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%-5level] [%class{36}] %L %M - %msg%xEx%n" />
+        </Console>
+
+        <File name="errorfile_appender" fileName="log/exception.log" append="false">
+            <!-- 过滤器 -->
+            <Filters>
+                <!-- 限制日志级别在error及以上 -->
+                <ThresholdFilter level="error"/>
+            </Filters>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+        <File name="file_appender" fileName="log/exception.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+        <!-- 一分钟一个日志 -->
+        <RollingFile name="file_appender" fileName="log/RollingFile.log" filePattern="log/app-%d{yyyy-MM-dd_HH_mm}.log.gz"
+                     ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%-5level] [%class{36}] %L %M - %msg%xEx%n</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+    </Appenders>
+    <loggers>
+
+        <root level="DEBUG">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file_appender"/>
+        </root>
+
+    </loggers>
+
+</configuration>
