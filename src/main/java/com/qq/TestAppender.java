@@ -12,7 +12,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import java.io.Serializable;
 
 /**
- * Created by qiangjiang on 2019/3/21.
+ * Created by QQ on 2019/3/21.
  */
 
 @Plugin(name = "TestAppender", category = "Core", elementType = "appender", printObject = true)

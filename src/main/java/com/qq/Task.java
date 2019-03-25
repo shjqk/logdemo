@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by qiangjiang on 2019/3/22.
+ * Created by QQ on 2019/3/22.
  */
 public class Task implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(Task.class);

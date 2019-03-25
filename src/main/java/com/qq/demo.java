@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.*;
 
 /**
- * Created by qiangjiang on 2019/3/21.
+ * Created by QQ on 2019/3/21.
  */
 public class demo  {
     private static final Logger logger = LoggerFactory.getLogger(demo.class);
